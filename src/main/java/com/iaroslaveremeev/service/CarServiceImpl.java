@@ -70,7 +70,7 @@ public class CarServiceImpl implements CarService {
             this.get(car.getId());
             this.carRepository.save(car);
         } catch (ConstraintViolationException e) {
-            throw new IllegalArgumentException("TV has already added!");
+            throw new IllegalArgumentException("Car with such parameters already exists!");
         }
     }
 }
