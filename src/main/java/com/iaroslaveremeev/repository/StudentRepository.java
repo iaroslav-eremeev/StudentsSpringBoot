@@ -61,24 +61,15 @@ public class StudentRepository {
         return Optional.ofNullable(this.studentHashMap.get(id));
     }
 
-    public List<Student> findByName(String name) {
+    public List<Student> findStudents(String name, Integer age, Integer num, Double salary) {
         return this.studentHashMap.values().stream()
-                .filter(x -> x.getName().equals(name)).collect(Collectors.toList());
-    }
-
-    public List<Student> findByAge(int age) {
-        return this.studentHashMap.values().stream()
-                .filter(x -> x.getAge() == age).collect(Collectors.toList());
-    }
-
-    public List<Student> findByNum(int num) {
-        return this.studentHashMap.values().stream()
-                .filter(x -> x.getNum() == num).collect(Collectors.toList());
-    }
-
-    public List<Student> findBySalary(double salary) {
-        return this.studentHashMap.values().stream()
-                .filter(x -> x.getSalary() == salary).collect(Collectors.toList());
+                .filter(student ->
+                        (name == null || student.getName().equals(name)) &&
+                                (age == null || student.getAge() == age) &&
+                                (num == null || student.getNum() == num) &&
+                                (salary == null || student.getSalary() == salary)
+                )
+                .collect(Collectors.toList());
     }
 
     public void deleteById(long id) {

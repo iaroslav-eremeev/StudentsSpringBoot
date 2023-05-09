@@ -11,13 +11,7 @@ public interface StudentService {
 
     Student get(long id);
 
-    List<Student> getByName(String name);
-
-    List<Student> getByAge(int age);
-
-    List<Student> getByNum(int num);
-
-    List<Student> getBySalary(double salary);
+    List<Student> getByCriteria(String name, int age, int num, double salary);
 
     Student delete(long id);
 
