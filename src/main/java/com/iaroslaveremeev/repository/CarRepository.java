@@ -61,24 +61,15 @@ public class CarRepository {
         return Optional.ofNullable(this.carHashMap.get(id));
     }
 
-    public List<Car> findByBrand(String brand) {
+    public List<Car> findCars(String brand, Integer power, Integer year, Long idStudent) {
         return this.carHashMap.values().stream()
-                .filter(x -> x.getBrand().equals(brand)).collect(Collectors.toList());
-    }
-
-    public List<Car> findByPower(int power) {
-        return this.carHashMap.values().stream()
-                .filter(x -> x.getPower() == power).collect(Collectors.toList());
-    }
-
-    public List<Car> findByYear(int year) {
-        return this.carHashMap.values().stream()
-                .filter(x -> x.getYear() == year).collect(Collectors.toList());
-    }
-
-    public List<Car> findByIdStudent(long idStudent) {
-        return this.carHashMap.values().stream()
-                .filter(x -> x.getIdStudent() == idStudent).collect(Collectors.toList());
+                .filter(car ->
+                        (brand == null || car.getBrand().equals(brand)) &&
+                                (power == null || car.getPower() == power) &&
+                                (year == null || car.getYear() == year) &&
+                                (idStudent == null || car.getIdStudent() == idStudent)
+                )
+                .collect(Collectors.toList());
     }
 
     public void deleteById(long id) {

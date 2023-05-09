@@ -38,23 +38,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> getByBrand(String brand) {
-        return this.carRepository.findByBrand(brand);
-    }
-
-    @Override
-    public List<Car> getByPower(int power) {
-        return this.carRepository.findByPower(power);
-    }
-
-    @Override
-    public List<Car> getByYear(int year) {
-        return this.carRepository.findByYear(year);
-    }
-
-    @Override
-    public List<Car> getByIdStudent(long idStudent) {
-        return this.carRepository.findByIdStudent(idStudent);
+    public List<Car> getByCriteria(String brand, Integer power, Integer year, Long idStudent) {
+        return this.carRepository.findCars(brand, power, year, idStudent);
     }
 
     @Override

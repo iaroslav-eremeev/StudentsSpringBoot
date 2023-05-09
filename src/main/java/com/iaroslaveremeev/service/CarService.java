@@ -12,13 +12,7 @@ public interface CarService {
 
     Car get(long id);
 
-    List<Car> getByBrand(String brand);
-
-    List<Car> getByPower(int power);
-
-    List<Car> getByYear(int year);
-
-    List<Car> getByIdStudent(long idStudent);
+    List<Car> getByCriteria(String brand, Integer power, Integer year, Long idStudent);
 
     Car delete(long id);
 
