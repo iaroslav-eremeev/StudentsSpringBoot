@@ -141,8 +141,17 @@ GET localhost:8080/car/3
 ### get car by incorrect id
 GET localhost:8080/car/5
 
-### get all students by salary - doesnt work
+### get all students by salary
 GET localhost:8080/student/search?salary=60000.0
 
 ### get all students by name
 GET localhost:8080/student/search?name=Igor
+
+### get all cars by brand
+GET localhost:8080/car/search?brand=Toyota
+
+### get all cars by wrong criteria - gives all cars
+GET localhost:8080/car/search?abc=xyz
+
+### get all cars by unexistent brand
+GET localhost:8080/car/search?brand=Volvo
