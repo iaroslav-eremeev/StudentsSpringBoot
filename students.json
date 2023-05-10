@@ -1,16 +1,1 @@
-[
-  {
-    "id": 2,
-    "name": "Vasiliy",
-    "age": 27,
-    "num": 110,
-    "salary": 30000.0
-  },
-  {
-    "id": 3,
-    "name": "Igor",
-    "age": 34,
-    "num": 125,
-    "salary": 60000.0
-  }
-]
+[{"id":1,"name":"Iaroslav","age":27,"num":100,"salary":60000.0},{"id":2,"name":"Vasiliy","age":27,"num":110,"salary":30000.0},{"id":3,"name":"Igor","age":34,"num":125,"salary":60000.0}]

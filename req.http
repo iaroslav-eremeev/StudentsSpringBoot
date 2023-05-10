@@ -65,7 +65,7 @@ content-type:application/json
 }
 
 ### remove Student by id
-DELETE localhost:8080/student/1
+DELETE localhost:8080/student/3
 
 ### remove Car by id
 DELETE localhost:8080/car/2
@@ -79,7 +79,7 @@ content-type:application/json
   "name" : "Iaroslav",
   "age" : 27,
   "num" : 100,
-  "salary" : 50000
+  "salary" : 60000
 }
 
 ### update Student with existing data
@@ -91,7 +91,7 @@ content-type:application/json
   "name" : "Iaroslav",
   "age" : 27,
   "num" : 100,
-  "salary" : 50000
+  "salary" : 60000
 }
 
 ### update Student with missing data

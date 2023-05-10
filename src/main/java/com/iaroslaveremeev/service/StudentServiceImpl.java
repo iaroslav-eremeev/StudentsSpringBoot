@@ -56,7 +56,7 @@ public class StudentServiceImpl implements StudentService {
             this.get(student.getId());
             this.studentRepository.save(student);
         } catch (ConstraintViolationException e) {
-            throw new IllegalArgumentException("Student with such parameters already exists!");
+            throw new IllegalArgumentException("Some parameters are invalid or student with such parameters already exists!");
         }
     }
 }

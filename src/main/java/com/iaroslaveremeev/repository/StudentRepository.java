@@ -31,9 +31,9 @@ public class StudentRepository {
     }
 
     public void save(Student student) throws ConstraintViolationException {
-        if (student.getName() == null || student.getAge() == 0 ||
-                student.getNum() == 0 || student.getSalary() == 0) {
-            throw new ConstraintViolationException("One or more parameters are null");
+        if (student.getName() == null || student.getAge() <= 0 ||
+                student.getNum() <= 0 || student.getSalary() <= 0) {
+            throw new ConstraintViolationException("One or more parameters are invalid");
         }
         if (this.studentHashMap.values().stream().anyMatch(x -> x.getName()
                 .equals(student.getName()) && x.getAge() == student.getAge()

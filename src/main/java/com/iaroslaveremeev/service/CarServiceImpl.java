@@ -55,7 +55,7 @@ public class CarServiceImpl implements CarService {
             this.get(car.getId());
             this.carRepository.save(car);
         } catch (ConstraintViolationException e) {
-            throw new IllegalArgumentException("Car with such parameters already exists!");
+            throw new IllegalArgumentException("Some parameters are invalid or car with such parameters already exists!");
         }
     }
 }

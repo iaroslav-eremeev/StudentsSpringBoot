@@ -31,6 +31,10 @@ public class CarRepository {
     }
 
     public void save(Car car) throws ConstraintViolationException {
+        if (car.getBrand() == null || car.getPower() <= 0 ||
+                car.getYear() <= 0 || car.getIdStudent() <= 0) {
+            throw new ConstraintViolationException("One or more parameters are invalid");
+        }
         if (this.carHashMap.values().stream().anyMatch(x -> x.getBrand()
                 .equals(car.getBrand()) && x.getPower() == car.getPower()
                 && x.getYear() == car.getYear()
