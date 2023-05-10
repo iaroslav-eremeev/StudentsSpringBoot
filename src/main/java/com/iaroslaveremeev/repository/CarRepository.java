@@ -80,4 +80,10 @@ public class CarRepository {
         this.carHashMap.remove(id);
         this.save();
     }
+
+    public void deleteAllByStudentId(long idStudent) {
+        this.carHashMap = this.carHashMap.values().stream()
+                .filter(car -> car.getIdStudent() != idStudent)
+                .collect(Collectors.toMap(Car::getId, car -> car));
+    }
 }

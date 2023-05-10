@@ -53,10 +53,14 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void update(Student student) {
         try {
+            if (student.getName() == null || student.getAge() <= 0 ||
+                    student.getNum() <= 0 || student.getSalary() <= 0) {
+                throw new IllegalArgumentException("One or more parameters are invalid");
+            }
             this.get(student.getId());
             this.studentRepository.save(student);
         } catch (ConstraintViolationException e) {
-            throw new IllegalArgumentException("Some parameters are invalid or student with such parameters already exists!");
+            throw new IllegalArgumentException("Student with such parameters already exists!");
         }
     }
 }

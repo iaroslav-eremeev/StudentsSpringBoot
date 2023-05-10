@@ -68,7 +68,7 @@ content-type:application/json
 DELETE localhost:8080/student/3
 
 ### remove Car by id
-DELETE localhost:8080/car/2
+DELETE localhost:8080/car/3
 
 ### update Student
 PUT localhost:8080/student/
@@ -155,3 +155,6 @@ GET localhost:8080/car/search?abc=xyz
 
 ### get all cars by unexistent brand
 GET localhost:8080/car/search?brand=Volvo
+
+### remove Student by id to check cars deletion
+DELETE localhost:8080/student/1

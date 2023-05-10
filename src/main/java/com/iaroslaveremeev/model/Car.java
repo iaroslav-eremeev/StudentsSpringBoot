@@ -13,5 +13,4 @@ public class Car {
     private int power;
     private int year;
     private long idStudent;
-
 }

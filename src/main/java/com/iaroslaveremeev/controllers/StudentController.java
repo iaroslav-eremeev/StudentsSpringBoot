@@ -1,8 +1,8 @@
 package com.iaroslaveremeev.controllers;
 
 import com.iaroslaveremeev.dto.ResponseResult;
-import com.iaroslaveremeev.model.Car;
 import com.iaroslaveremeev.model.Student;
+import com.iaroslaveremeev.service.CarService;
 import com.iaroslaveremeev.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,11 +15,15 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
     private StudentService studentService;
+    private CarService carService;
 
     @Autowired
     public void setStudentService(StudentService studentService){
         this.studentService = studentService;
     }
+
+    @Autowired
+    public void setCarService(CarService carService) {this.carService = carService; }
 
     @PostMapping
     public ResponseEntity<ResponseResult<Student>> add (@RequestBody Student student){
@@ -35,6 +39,7 @@ public class StudentController {
     public ResponseEntity<ResponseResult<Student>> delete (@PathVariable long id){
         try {
             Student student = this.studentService.delete(id);
+            this.carService.deleteAllByStudentId(id);
             return new ResponseEntity<>(new ResponseResult<>(null, student), HttpStatus.OK);
         } catch (IllegalArgumentException e){
             return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);

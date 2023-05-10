@@ -1,7 +1,6 @@
 package com.iaroslaveremeev.service;
 
 import com.iaroslaveremeev.model.Car;
-import com.iaroslaveremeev.model.Student;
 
 import java.util.List;
 
@@ -15,6 +14,8 @@ public interface CarService {
     List<Car> getByCriteria(String brand, Integer power, Integer year, Long idStudent);
 
     Car delete(long id);
+
+    void deleteAllByStudentId(long idStudent);
 
     void update(Car car);
 }

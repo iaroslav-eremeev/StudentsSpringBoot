@@ -6,6 +6,7 @@ import com.iaroslaveremeev.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -47,6 +48,11 @@ public class CarServiceImpl implements CarService {
         Car car = this.get(id);
         this.carRepository.deleteById(id);
         return car;
+    }
+
+    @Override
+    public void deleteAllByStudentId(long idStudent){
+        this.carRepository.deleteAllByStudentId(idStudent);
     }
 
     @Override
