@@ -1,0 +1,148 @@
+### add Student
+POST localhost:8080/student
+content-type:application/json
+
+{
+  "name" : "Iaroslav",
+  "age" : 29,
+  "num" : 100,
+  "salary" : 50000
+}
+
+### add Student
+POST localhost:8080/student
+content-type:application/json
+
+{
+  "name" : "Vasiliy",
+  "age" : 27,
+  "num" : 110,
+  "salary" : 30000
+}
+
+### add Student
+POST localhost:8080/student
+content-type:application/json
+
+{
+  "name" : "Igor",
+  "age" : 34,
+  "num" : 125,
+  "salary" : 60000
+}
+
+### add Car
+POST localhost:8080/car
+content-type:application/json
+
+{
+  "brand" : "Toyota",
+  "power" : 169,
+  "year" : 2016,
+  "idStudent" : 1
+}
+
+### add Car
+POST localhost:8080/car
+content-type:application/json
+
+{
+  "brand" : "Volkswagen",
+  "power" : 92,
+  "year" : 2014,
+  "idStudent" : 2
+}
+
+### add Car
+POST localhost:8080/car
+content-type:application/json
+
+{
+  "brand" : "BMW",
+  "power" : 285,
+  "year" : 2013,
+  "idStudent" : 3
+}
+
+### remove Student by id
+DELETE localhost:8080/student/1
+
+### remove Car by id
+DELETE localhost:8080/car/2
+
+### update Student
+PUT localhost:8080/student/
+content-type:application/json
+
+{
+  "id" : 1,
+  "name" : "Iaroslav",
+  "age" : 27,
+  "num" : 100,
+  "salary" : 50000
+}
+
+### update Student with existing data
+PUT localhost:8080/student/
+content-type:application/json
+
+{
+  "id" : 1,
+  "name" : "Iaroslav",
+  "age" : 27,
+  "num" : 100,
+  "salary" : 50000
+}
+
+### update Student with missing data
+PUT localhost:8080/student/
+content-type:application/json
+
+{
+  "id" : 1,
+  "name" : "Iaroslav",
+  "age" : 28
+}
+
+### update Student with wrong data
+PUT localhost:8080/student/
+content-type:application/json
+
+{
+  "id" : 1,
+  "surname" : "Andreev",
+  "age" : 28
+}
+
+### update Car
+PUT localhost:8080/car/
+content-type:application/json
+
+{
+  "id" : 3,
+  "brand" : "BMW",
+  "power" : 285,
+  "year" : 2013,
+  "idStudent" : 2
+}
+
+### get all students
+GET localhost:8080/student
+
+### get all cars
+GET localhost:8080/car
+
+### get student by id
+GET localhost:8080/student/2
+
+### get car by id
+GET localhost:8080/car/3
+
+### get car by incorrect id
+GET localhost:8080/car/5
+
+### get all students by salary - doesnt work
+GET localhost:8080/student/search?salary=60000.0
+
+### get all students by name
+GET localhost:8080/student/search?name=Igor

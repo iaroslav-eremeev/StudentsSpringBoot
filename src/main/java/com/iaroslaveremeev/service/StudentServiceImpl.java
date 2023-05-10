@@ -39,7 +39,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getByCriteria(String name, int age, int num, double salary){
+    public List<Student> getByCriteria(String name, Integer age, Integer num, Double salary){
         return this.studentRepository.findStudents(name, age, num, salary);
     }
 

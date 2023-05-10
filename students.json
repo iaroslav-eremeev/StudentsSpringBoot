@@ -1,0 +1,16 @@
+[
+  {
+    "id": 2,
+    "name": "Vasiliy",
+    "age": 27,
+    "num": 110,
+    "salary": 30000.0
+  },
+  {
+    "id": 3,
+    "name": "Igor",
+    "age": 34,
+    "num": 125,
+    "salary": 60000.0
+  }
+]
