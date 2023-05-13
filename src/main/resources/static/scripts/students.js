@@ -4,6 +4,8 @@ $(document).ready(function () {
     });
 
     $("#addStudentForm").submit(function(event) {
+        event.preventDefault();
+
         const name = $('#name').val();
         const age = parseInt($('#age').val());
         const num = parseInt($('#num').val());
