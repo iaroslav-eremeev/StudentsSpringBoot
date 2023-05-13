@@ -6,9 +6,34 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        h1, h3 {
+            text-align: center;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
 
+        .btn-container button {
+            font-size: large;
+            width: 250px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
+<body class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+<div>
+<h1>Welcome to the Students Spring Boot project!</h1>
+<h3>Let's fulfil some students' dream - to have a nice car</h3>
+<div class="btn-container">
+    <button class="btn btn-primary" id="studentBtn">Work with students</button>
+    <button class="btn btn-success" id="carBtn">Work with cars</button>
+</div>
+</div>
 <script type="module" src="scripts/index.js" defer></script>
 </body>
 </html>

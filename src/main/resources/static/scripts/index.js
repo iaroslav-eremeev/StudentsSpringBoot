@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $.ajax({
+    /*$.ajax({
         url: '/student',
         method: 'GET',
         success: function (students) {
@@ -12,6 +12,6 @@ $(document).ready(function() {
             });
             $('body').append(ul);
         },
-    });
+    });*/
 
 })
