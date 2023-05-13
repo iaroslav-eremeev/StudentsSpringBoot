@@ -7,7 +7,7 @@ $(document).ready(function() {
     $("#carBtn").on("click", function () {
         window.location.href = "cars.html";
     })
-    
+
     /*$.ajax({
         url: '/student',
         method: 'GET',
