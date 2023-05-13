@@ -27,10 +27,10 @@ $(document).ready(function () {
             success: function (data) {
                 console.log('Student added successfully');
                 alert('Student added successfully');
-                $('#nameInput').val('');
-                $('#ageInput').val('');
-                $('#numInput').val('');
-                $('#salaryInput').val('');
+                $('#name').val('');
+                $('#age').val('');
+                $('#num').val('');
+                $('#salary').val('');
             },
             error: function () {
                 alert('Please check the values you gave as input');
