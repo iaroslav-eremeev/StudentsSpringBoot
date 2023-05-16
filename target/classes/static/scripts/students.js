@@ -184,7 +184,10 @@ $(document).ready(function () {
         } else {
             alert('Invalid input. Fill either student ID or any other parameters or leave all the fields empty')
         }
-    })
+    });
 
+    $('#clearGetSelection').click(function () {
+        $('#studentsFound').empty();
+    });
 
 });
