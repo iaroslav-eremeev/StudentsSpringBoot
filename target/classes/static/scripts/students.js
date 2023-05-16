@@ -132,7 +132,7 @@ $(document).ready(function () {
         form.removeClass('d-none');
         const inputSelector = $('#formInput');
         inputSelector.removeClass("idInput");
-        inputSelector.type = "number";
+        inputSelector.attr('type', 'number');
         var selectedOption = $(this).find(':selected');
         var optionId = selectedOption.attr('id');
         if (optionId === 'dropdownId') {
@@ -140,7 +140,7 @@ $(document).ready(function () {
             inputSelector.addClass("idInput");
         } else if (optionId === 'dropdownName') {
             $('#formInputLabel').text("Name:");
-            inputSelector.type = "text";
+            inputSelector.attr('type', 'text');
         } else if (optionId === 'dropdownAge') {
             $('#formInputLabel').text("Age:");
         } else if (optionId === 'dropdownNum') {
