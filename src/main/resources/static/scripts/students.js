@@ -27,8 +27,7 @@ $(document).ready(function () {
             data: JSON.stringify(student),
             success: function (student) {
                 const addedStudent = student.data;
-                console.log(`Student ${addedStudent.name} added successfully`);
-                alert('Student added successfully');
+                alert(`Student ${addedStudent.name} added successfully`);
                 $('#addName').val('');
                 $('#addAge').val('');
                 $('#addNum').val('');
@@ -55,7 +54,6 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (student) {
                 const deletedStudent = student.data;
-                console.log('Student deleted successfully');
                 alert(`Student ${deletedStudent.name} deleted successfully`);
                 $('#deleteId').val('');
             },
@@ -94,7 +92,6 @@ $(document).ready(function () {
             data: JSON.stringify(student),
             success: function (student) {
                 const updatedStudent = student.data;
-                console.log('Student updated successfully');
                 alert(`Student ${updatedStudent.name} updated successfully`);
                 $('#updateId').val('');
                 $('#updateName').val('');
@@ -169,10 +166,7 @@ $(document).ready(function () {
         const inputSelector = $('#formInput');
         const value = inputSelector.val();
         const parameter = inputSelector.data('getParam');
-        console.log("Parameter is " + parameter);
-        console.log("Input value is " + value);
         if (parameter === 'id'){
-            console.log("ID search selected!");
             $.ajax({
                 url: '/student/' + value,
                 method: 'GET',
@@ -189,7 +183,6 @@ $(document).ready(function () {
                 }
             });
         } else {
-            console.log("Other parameter search selected!");
             $.ajax({
                 url: '/student/search/' + parameter + "?" + parameter + "=" + value,
                 method: 'GET',
