@@ -127,7 +127,7 @@
     <button type="button" class="btn btn-info btn-lg" id="getStudentBtn" style="width: 250px; margin-bottom: 25px">Get students</button>
     <div id="dropdownListDiv" class="d-none">
         <p>Choose the parameter to find students by:</p>
-        <select id="getDropdownList" class="mb-3">
+        <select id="getDropdownList" class="mb-3" style="width: 200px">
             <option value="default">Choose parameter</option>
             <option value="dropdownId" id="dropdownId">ID</option>
             <option value="dropdownName" id="dropdownName">Name</option>
@@ -189,7 +189,7 @@
     </form>
         <!--<input type="hidden" name="action" value="getStudent">-->
     <div id="buttonsSubmitAndClear" class="d-none">
-        <button type="submit" class="btn btn-info" style="width: 130px; margin-right: 15px">Get</button>
+        <button type="submit" class="btn btn-info" id ="getStudentForm" style="width: 130px; margin-right: 15px">Get</button>
         <button type="button" class="btn btn-danger" id ="clearGetSelection" style="width: 130px;">Clear selection</button>
     </div>
     <div id="studentsFound" class="mt-2"></div>

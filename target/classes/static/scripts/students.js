@@ -122,6 +122,7 @@ $(document).ready(function () {
     }
 
     $('#getStudentBtn').click(function () {
+        $('#getDropdownList').selectedIndex = -1;
         $('#dropdownListDiv').toggleClass('d-none');
         $('#buttonsSubmitAndClear').toggleClass('d-none');
     });
@@ -229,6 +230,7 @@ $(document).ready(function () {
 
     $('#clearGetSelection').click(function () {
         $('#studentsFound').empty();
+        $('#getDropdownList').selectedIndex = -1;
     });
 
 });

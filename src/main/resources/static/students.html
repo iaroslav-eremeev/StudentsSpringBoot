@@ -127,7 +127,7 @@
     <button type="button" class="btn btn-info btn-lg" id="getStudentBtn" style="width: 250px; margin-bottom: 25px">Get students</button>
     <div id="dropdownListDiv" class="d-none">
         <p>Choose the parameter to find students by:</p>
-        <select id="getDropdownList" class="mb-3">
+        <select id="getDropdownList" class="mb-3" style="width: 200px">
             <option value="default">Choose parameter</option>
             <option value="dropdownId" id="dropdownId">ID</option>
             <option value="dropdownName" id="dropdownName">Name</option>
@@ -137,16 +137,24 @@
             <option value="dropdownAll" id="dropdownAll">See the full list</option>
         </select>
     </div>
-    <form id="getStudentByIdForm" class="search-form mt-1 mb-3 d-none">
+    <form id="getStudentForm" class="mt-1 mb-3 d-none">
         <div class="form-group row">
             <div class="col-sm-3"></div>
-            <label for="getId" class="col-sm-3 col-form-label">Student ID:</label>
+            <label for="formInput" class="col-sm-3 col-form-label" id="formInputLabel"></label>
             <div class="col-sm-3">
-                <input type="number" class="form-control" id="getId" name="getId">
+                <input type="number" class="form-control" id="formInput">
             </div>
             <div class="col-sm-3"></div>
         </div>
     </form>
+    <div id="buttonsSubmitAndClear" class="d-none">
+        <button type="submit" class="btn btn-info" id ="submitGetStudentForm" style="width: 130px; margin-right: 15px">Get</button>
+        <button type="button" class="btn btn-danger" id ="clearGetSelection" style="width: 130px;">Clear selection</button>
+    </div>
+    <div id="studentsFound" class="mt-2"></div>
+
+
+
     <form id="getStudentByNameForm" class="search-form mt-1 mb-3 d-none">
         <div id="getStudentFormNameRow" class="form-group row">
             <div class="col-sm-3"></div>
@@ -188,11 +196,7 @@
         </div>
     </form>
         <!--<input type="hidden" name="action" value="getStudent">-->
-    <div id="buttonsSubmitAndClear" class="d-none">
-        <button type="submit" class="btn btn-info" style="width: 130px; margin-right: 15px">Get</button>
-        <button type="button" class="btn btn-danger" id ="clearGetSelection" style="width: 130px;">Clear selection</button>
-    </div>
-    <div id="studentsFound" class="mt-2"></div>
+
 </div>
 <script type="module" src="scripts/students.js" defer></script>
 </body>
