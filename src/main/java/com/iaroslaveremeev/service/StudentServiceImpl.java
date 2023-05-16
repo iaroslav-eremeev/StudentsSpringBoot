@@ -1,6 +1,5 @@
 package com.iaroslaveremeev.service;
 
-import com.iaroslaveremeev.exceptions.ConstraintViolationException;
 import com.iaroslaveremeev.model.Student;
 import com.iaroslaveremeev.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
