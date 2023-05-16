@@ -111,6 +111,7 @@ $(document).ready(function () {
     /* Get students */
 
     function displayStudents(students) {
+        students = students.data;
         var ul = $('<ul>');
         $.each(students, function (key, student) {
             var li = $('<li>').text('ID ' + student.id + '. ' + student.name + ', ' +
@@ -121,7 +122,43 @@ $(document).ready(function () {
     }
 
     $('#getStudentBtn').click(function () {
-        $('#getStudentForm').toggleClass('d-none');
+        $('#dropdownListDiv').toggleClass('d-none');
+        $('#buttonsSubmitAndClear').toggleClass('d-none');
+    });
+
+    $('#getDropdownList').change(function() {
+        var selectedOption = $(this).find(':selected');
+        var optionId = selectedOption.attr('id');
+        var searchForms = document.querySelectorAll('.search-form');
+        searchForms.forEach(function(form) {
+            form.classList.add('d-none');
+        });
+        if (optionId === 'dropdownId') {
+            $('#getStudentByIdForm').toggleClass('d-none');
+            console.log("ID option selected");
+        } else if (optionId === 'dropdownName') {
+            $('#getStudentByNameForm').toggleClass('d-none');
+            console.log("Name option selected");
+        } else if (optionId === 'dropdownAge') {
+            $('#getStudentByAgeForm').toggleClass('d-none');
+            console.log("Age option selected");
+        } else if (optionId === 'dropdownNum') {
+            $('#getStudentByNumForm').toggleClass('d-none');
+            console.log("Personal number option selected");
+        } else if (optionId === 'dropdownSalary') {
+            $('#getStudentBySalaryForm').toggleClass('d-none');
+            console.log("Salary option selected");
+        } else if (optionId === 'dropdownAll') {
+            console.log("See the full list option selected");
+            $.ajax({
+                url: '/student',
+                method: 'GET',
+                success: displayStudents,
+                error: function () {
+                    alert('Error occurred while getting the whole list of students');
+                }
+            });
+        }
     });
 
     $('#getStudentForm').submit(function (event) {
@@ -132,17 +169,7 @@ $(document).ready(function () {
         const num = parseInt($('#getNum').val());
         const salary = parseFloat($('#getSalary').val());
         var searchParams = {};
-        if (!id && !name && !age && !num && !salary){
-            $.ajax({
-                url: '/student',
-                method: 'GET',
-                success: displayStudents,
-                error: function () {
-                    alert('Error occurred while getting the whole list of students');
-                }
-            });
-        }
-        else if (id && !name && !age && !num && !salary){
+        if (id){
             $.ajax({
                 url: '/student/' + id,
                 method: 'GET',
@@ -199,6 +226,7 @@ $(document).ready(function () {
             alert('Invalid input. Fill either student ID or one of other parameters or leave all the fields empty')
         }
     });
+
     $('#clearGetSelection').click(function () {
         $('#studentsFound').empty();
     });
