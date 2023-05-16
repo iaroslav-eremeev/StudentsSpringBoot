@@ -18,7 +18,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void add(Student student) {
+    public void addStudent(Student student) {
         try {
             this.studentRepository.save(student);
         } catch (ConstraintViolationException e) {
@@ -38,8 +38,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getByCriteria(String name, Integer age, Integer num, Double salary){
-        return this.studentRepository.findStudents(name, age, num, salary);
+    public List<Student> get(String name, Integer age, Integer num, Double salary){
+        return this.studentRepository.getStudentsByNameAndByAgeAndByNumAndBySalary(name, age, num, salary);
     }
 
     @Override
@@ -50,15 +50,20 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void update(Student student) {
+    public Student update(Student student) {
+        if (student.getName() == null || student.getAge() <= 0 ||
+                student.getNum() <= 0 || student.getSalary() <= 0) {
+            throw new IllegalArgumentException("One or more parameters are invalid");
+        }
+        Student baseStudent = this.get(student.getId());
+        baseStudent.setName(student.getName());
+        baseStudent.setAge(student.getAge());
+        baseStudent.setNum(student.getNum());
+        baseStudent.setSalary(student.getSalary());
         try {
-            if (student.getName() == null || student.getAge() <= 0 ||
-                    student.getNum() <= 0 || student.getSalary() <= 0) {
-                throw new IllegalArgumentException("One or more parameters are invalid");
-            }
-            this.get(student.getId());
-            this.studentRepository.save(student);
-        } catch (ConstraintViolationException e) {
+            this.studentRepository.save(baseStudent);
+            return baseStudent;
+        } catch (Exception e) {
             throw new IllegalArgumentException("Student with such parameters already exists!");
         }
     }

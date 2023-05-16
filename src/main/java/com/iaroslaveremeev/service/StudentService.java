@@ -5,15 +5,11 @@ import com.iaroslaveremeev.model.Student;
 import java.util.List;
 
 public interface StudentService {
-    void add(Student student);
-
+    void addStudent(Student student);
     List<Student> get();
-
     Student get(long id);
-
-    List<Student> getByCriteria(String name, Integer age, Integer num, Double salary);
-
     Student delete(long id);
+    Student update(Student student);
+    List<Student> get(String name, Integer age, Integer num, Double salary);
 
-    void update(Student student);
 }

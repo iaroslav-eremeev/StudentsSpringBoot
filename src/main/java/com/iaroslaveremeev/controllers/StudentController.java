@@ -28,7 +28,7 @@ public class StudentController {
     @PostMapping
     public ResponseEntity<ResponseResult<Student>> add (@RequestBody Student student){
         try {
-            this.studentService.add(student);
+            this.studentService.addStudent(student);
             return new ResponseEntity<>(new ResponseResult<>(null, student), HttpStatus.OK);
         } catch (IllegalArgumentException e){
             return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
@@ -82,7 +82,7 @@ public class StudentController {
                                                                    @RequestParam(required = false) Integer num,
                                                                    @RequestParam(required = false) Double salary) {
         try {
-            List<Student> students = this.studentService.getByCriteria(name, age, num, salary);
+            List<Student> students = this.studentService.get(name, age, num, salary);
             return new ResponseEntity<>(new ResponseResult<>(null, students), HttpStatus.OK);
         } catch (IllegalArgumentException e){
             return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);

@@ -14,7 +14,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
-public class StudentRepository {
+public class StudentRepository extends JpaRepository<Student,Long> {
     @Value("${datasource.studentsFilename}")
     private String filename;
     private Map<Long, Student> studentHashMap = new HashMap<>();
