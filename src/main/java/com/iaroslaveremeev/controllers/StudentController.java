@@ -22,9 +22,6 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @Autowired
-    public void setCarService(CarService carService) {this.carService = carService; }
-
     @PostMapping
     public ResponseEntity<ResponseResult<Student>> add (@RequestBody Student student){
         try {
@@ -77,15 +74,9 @@ public class StudentController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<ResponseResult<List<Student>>> getByCriteria(@RequestParam(required = false) String name,
-                                                                   @RequestParam(required = false) Integer age,
-                                                                   @RequestParam(required = false) Integer num,
-                                                                   @RequestParam(required = false) Double salary) {
-        try {
-            List<Student> students = this.studentService.get(name, age, num, salary);
-            return new ResponseEntity<>(new ResponseResult<>(null, students), HttpStatus.OK);
-        } catch (IllegalArgumentException e){
-            return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<ResponseResult<List<Student>>> getStudentsByNameAndAgeAndNumAndSalary(
+            @RequestParam String name, @RequestParam int age, @RequestParam int num, @RequestParam double salary) {
+        List<Student> students = this.studentService.get(name, age, num, salary);
+        return new ResponseEntity<>(new ResponseResult<>(null, students), HttpStatus.OK);
     }
 }
