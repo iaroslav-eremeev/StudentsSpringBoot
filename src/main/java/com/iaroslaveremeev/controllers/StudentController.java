@@ -2,7 +2,6 @@ package com.iaroslaveremeev.controllers;
 
 import com.iaroslaveremeev.dto.ResponseResult;
 import com.iaroslaveremeev.model.Student;
-import com.iaroslaveremeev.service.CarService;
 import com.iaroslaveremeev.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,11 +29,13 @@ public class StudentController {
             return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
         }
     }
+
     @GetMapping
     public ResponseEntity<ResponseResult<List<Student>>> get() {
         List<Student> students = this.studentService.get();
         return new ResponseEntity<>(new ResponseResult<>(null, students), HttpStatus.OK);
     }
+
     @GetMapping(path = "/{id}")
     public ResponseEntity<ResponseResult<Student>> get(@PathVariable long id) {
         try {
@@ -44,6 +45,7 @@ public class StudentController {
             return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
         }
     }
+
     @GetMapping("/search")
     public ResponseEntity<ResponseResult<List<Student>>> getStudentsByNameAndAgeAndNumAndSalary(
             @RequestParam String name, @RequestParam int age, @RequestParam int num, @RequestParam double salary) {

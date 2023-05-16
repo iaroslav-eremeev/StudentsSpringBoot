@@ -1,8 +1,6 @@
 package com.iaroslaveremeev.controllers;
 
 import com.iaroslaveremeev.dto.ResponseResult;
-import com.iaroslaveremeev.model.Car;
-import com.iaroslaveremeev.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+/*@RestController
 @RequestMapping("/car")
 public class CarController {
 
@@ -83,4 +81,4 @@ public class CarController {
             return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
         }
     }
-}
+}*/

@@ -1,15 +1,13 @@
 package com.iaroslaveremeev.service;
 
-import com.iaroslaveremeev.exceptions.ConstraintViolationException;
 import com.iaroslaveremeev.model.Car;
-import com.iaroslaveremeev.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+/*@Service
 public class CarServiceImpl implements CarService {
     private CarRepository carRepository;
 
@@ -64,4 +62,4 @@ public class CarServiceImpl implements CarService {
             throw new IllegalArgumentException("Some parameters are invalid or car with such parameters already exists!");
         }
     }
-}
+}*/

@@ -2,7 +2,6 @@ package com.iaroslaveremeev.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.iaroslaveremeev.exceptions.ConstraintViolationException;
 import com.iaroslaveremeev.model.Car;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -13,7 +12,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Repository
+/*@Repository
 public class CarRepository {
     @Value("${datasource.carsFilename}")
     private String filename;
@@ -86,4 +85,4 @@ public class CarRepository {
                 .filter(car -> car.getIdStudent() != idStudent)
                 .collect(Collectors.toMap(Car::getId, car -> car));
     }
-}
+}*/

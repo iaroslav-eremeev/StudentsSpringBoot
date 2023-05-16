@@ -1,10 +1,8 @@
 package com.iaroslaveremeev.service;
 
-import com.iaroslaveremeev.model.Car;
-
 import java.util.List;
 
-public interface CarService {
+/*public interface CarService {
     void add(Car car);
 
     List<Car> get();
@@ -18,4 +16,4 @@ public interface CarService {
     void deleteAllByStudentId(long idStudent);
 
     void update(Car car);
-}
+}*/
