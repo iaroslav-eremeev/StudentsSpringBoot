@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+    /* Add student */
+
     $('#addStudentBtn').click(function () {
         $('#addStudentForm').toggleClass('d-none');
     });
@@ -36,6 +39,8 @@ $(document).ready(function () {
         });
     });
 
+    /* Delete student by ID */
+
     $('#deleteStudentBtn').click(function () {
         $('#deleteStudentForm').toggleClass('d-none');
     });
@@ -55,6 +60,49 @@ $(document).ready(function () {
             },
             error: function () {
                 alert('Please check the student ID');
+            }
+        });
+    });
+
+    /* Update student */
+
+    $('#updateStudentBtn').click(function () {
+        $('#updateStudentForm').toggleClass('d-none');
+    });
+
+    $("#updateStudentForm").submit(function(event) {
+        event.preventDefault();
+        const id = parseInt($('#updateId').val());
+        const name = $('#updateName').val();
+        const age = parseInt($('#updateAge').val());
+        const num = parseInt($('#updateNum').val());
+        const salary = parseFloat($('#updateSalary').val());
+        var student = {
+            "id": id,
+            "name": name,
+            "age": age,
+            "num": num,
+            "salary": salary
+        };
+
+        $.ajax({
+            url: '/student',
+            type: 'PUT',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(student),
+            success: function (data) {
+                const updatedStudent = data.data;
+                console.log('Student updated successfully');
+                alert(`Student ${updatedStudent.name} updated successfully`);
+                $('#updateId').val('');
+                $('#updateName').val('');
+                $('#updateAge').val('');
+                $('#updateNum').val('');
+                $('#updateSalary').val('');
+            },
+            error: function () {
+                alert('Please check the values you gave as input');
             }
         });
     });
