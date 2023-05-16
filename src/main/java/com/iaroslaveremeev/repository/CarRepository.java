@@ -2,7 +2,6 @@ package com.iaroslaveremeev.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.iaroslaveremeev.model.Car;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 

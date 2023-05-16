@@ -110,6 +110,16 @@ $(document).ready(function () {
 
     /* Get students */
 
+    function displayStudents(students) {
+        var ul = $('<ul>');
+        $.each(students, function (key, student) {
+            var li = $('<li>').text('ID ' + student.id + '. ' + student.name + ', ' +
+                student.age + ' years, personal number ' + student.num + ', salary ' + student.salary);
+            ul.append(li);
+        });
+        $('#studentsFound').empty().append(ul);
+    }
+
     $('#getStudentBtn').click(function () {
         $('#getStudentForm').toggleClass('d-none');
     });
@@ -121,22 +131,14 @@ $(document).ready(function () {
         const age = parseInt($('#getAge').val());
         const num = parseInt($('#getNum').val());
         const salary = parseFloat($('#getSalary').val());
+        var searchParams = {};
         if (!id && !name && !age && !num && !salary){
             $.ajax({
                 url: '/student',
                 method: 'GET',
-                success: function (students) {
-                    students = students.data;
-                    var ul = $('<ul>');
-                    $.each(students, function (key, student) {
-                        var li = $('<li>').text('ID ' + student.id + '. ' + student.name + ', ' +
-                            student.age + ' years, personal number ' + student.num + ', salary ' + student.salary);
-                        ul.append(li);
-                    });
-                    $('#studentsFound').empty().append(ul);
-                },
+                success: displayStudents,
                 error: function () {
-                    alert('Error occurred while searching for students');
+                    alert('Error occurred while getting the whole list of students');
                 }
             });
         }
@@ -144,47 +146,59 @@ $(document).ready(function () {
             $.ajax({
                 url: '/student/' + id,
                 method: 'GET',
-                success: function (student) {
-                    student = student.data;
-                    var ul = $('<ul>');
-                    ul.append($('<li>').text('ID ' + student.id + '. ' + student.name + ', ' +
-                        student.age + ' years, personal number ' + student.num + ', salary ' + student.salary));
-                    $('#studentsFound').empty().append(ul);
-                },
+                success: displayStudents,
                 error: function () {
-                    alert('Error occurred while searching for students');
+                    alert('Error occurred while searching for a student by ID');
                 }
             });
-        }
-        else if (!id && (name || age || num || salary)) {
-            var searchParams = {};
-            if (name) searchParams.name = name;
-            if (age) searchParams.age = age;
-            if (num) searchParams.num = num;
-            if (salary) searchParams.salary = salary;
+        } else if (name) {
+            searchParams.name = name;
             $.ajax({
-                url: '/student/search',
+                url: '/student/search/name',
                 method: 'GET',
                 data: searchParams,
-                success: function (students) {
-                    students = students.data;
-                    var ul = $('<ul>');
-                    $.each(students, function (key, student) {
-                        var li = $('<li>').text('ID ' + student.id + '. ' + student.name + ', ' +
-                            student.age + ' years, personal number ' + student.num + ', salary ' + student.salary);
-                        ul.append(li);
-                    });
-                    $('#studentsFound').empty().append(ul);
-                },
+                success: displayStudents,
                 error: function () {
-                    alert('Error occurred while searching for students');
+                    alert('Error occurred while searching for students by name');
+                }
+            });
+        } else if (age) {
+            searchParams.age = age;
+            $.ajax({
+                url: '/student/search/age',
+                method: 'GET',
+                data: searchParams,
+                success: displayStudents,
+                error: function () {
+                    alert('Error occurred while searching for students by age');
+                }
+            });
+        } else if (num) {
+            searchParams.num = num;
+            $.ajax({
+                url: '/student/search/num',
+                method: 'GET',
+                data: searchParams,
+                success: displayStudents,
+                error: function () {
+                    alert('Error occurred while searching for students by personal number');
+                }
+            });
+        } else if (salary) {
+            searchParams.salary = salary;
+            $.ajax({
+                url: '/student/search/salary',
+                method: 'GET',
+                data: searchParams,
+                success: displayStudents,
+                error: function () {
+                    alert('Error occurred while searching for students by salary');
                 }
             });
         } else {
-            alert('Invalid input. Fill either student ID or any other parameters or leave all the fields empty')
+            alert('Invalid input. Fill either student ID or one of other parameters or leave all the fields empty')
         }
     });
-
     $('#clearGetSelection').click(function () {
         $('#studentsFound').empty();
     });
