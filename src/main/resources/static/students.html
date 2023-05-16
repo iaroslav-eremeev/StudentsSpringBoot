@@ -14,33 +14,33 @@
     <form id="addStudentForm" class="mt-3 d-none">
         <div class="form-group row">
             <div class="col-sm-3"></div>
-            <label for="name" class="col-sm-3 col-form-label">Name:</label>
+            <label for="addName" class="col-sm-3 col-form-label">Name:</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="addName" name="addName" required>
             </div>
             <div class="col-sm-3"></div>
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
-            <label for="age" class="col-sm-3 col-form-label">Age:</label>
+            <label for="addAge" class="col-sm-3 col-form-label">Age:</label>
             <div class="col-sm-3">
-                <input type="number" class="form-control" id="age" name="age" required>
+                <input type="number" class="form-control" id="addAge" name="addAge" required>
             </div>
             <div class="col-sm-3"></div>
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
-            <label for="num" class="col-sm-3 col-form-label">Personal number:</label>
+            <label for="addNum" class="col-sm-3 col-form-label">Personal number:</label>
             <div class="col-sm-3">
-                <input type="number" class="form-control" id="num" name="num" required>
+                <input type="number" class="form-control" id="addNum" name="addNum" required>
             </div>
             <div class="col-sm-3"></div>
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
-            <label for="salary" class="col-sm-3 col-form-label">Salary:</label>
+            <label for="addSalary" class="col-sm-3 col-form-label">Salary:</label>
             <div class="col-sm-3">
-                <input type="number" class="form-control" id="salary" name="salary" required>
+                <input type="number" class="form-control" id="addSalary" name="addSalary" required>
             </div>
             <div class="col-sm-3"></div>
         </div>
@@ -54,14 +54,63 @@
     <form id="deleteStudentForm" class="mt-3 d-none">
         <div class="form-group row">
             <div class="col-sm-3"></div>
-            <label for="id" class="col-sm-3 col-form-label">Student ID:</label>
+            <label for="deleteId" class="col-sm-3 col-form-label">Student ID:</label>
             <div class="col-sm-3">
-                <input type="number" class="form-control" id="id" name="id" required>
+                <input type="number" class="form-control" id="deleteId" name="deleteId" required>
             </div>
             <div class="col-sm-3"></div>
         </div>
         <input type="hidden" name="action" value="deleteStudent">
         <button type="submit" class="btn btn-danger" style="width: 100px;">Delete</button>
+    </form>
+</div>
+
+<!-- Updating students -->
+<div class="container text-center mt-5">
+    <button type="button" class="btn btn-primary btn-lg" id="updateStudentBtn" style="width: 250px;">Update student</button>
+    <form id="updateStudentForm" class="mt-3 d-none">
+        <div class="form-group row">
+            <div class="col-sm-3"></div>
+            <label for="updateId" class="col-sm-3 col-form-label">Student ID:</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="updateId" name="updateId" required>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3"></div>
+            <label for="updateName" class="col-sm-3 col-form-label">Name:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="updateName" name="updateName" required>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3"></div>
+            <label for="updateAge" class="col-sm-3 col-form-label">Age:</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="updateAge" name="updateAge" required>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3"></div>
+            <label for="updateNum" class="col-sm-3 col-form-label">Personal number:</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="updateNum" name="updateNum" required>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3"></div>
+            <label for="updateSalary" class="col-sm-3 col-form-label">Salary:</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="updateSalary" name="updateSalary" required>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <input type="hidden" name="action" value="updateStudent">
+        <button type="submit" class="btn btn-primary" style="width: 100px;">Update</button>
     </form>
 </div>
 

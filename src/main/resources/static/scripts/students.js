@@ -5,10 +5,10 @@ $(document).ready(function () {
 
     $("#addStudentForm").submit(function(event) {
         event.preventDefault();
-        const name = $('#name').val();
-        const age = parseInt($('#age').val());
-        const num = parseInt($('#num').val());
-        const salary = parseFloat($('#salary').val());
+        const name = $('#addName').val();
+        const age = parseInt($('#addAge').val());
+        const num = parseInt($('#addNum').val());
+        const salary = parseFloat($('#addSalary').val());
         var student = {
             "name": name,
             "age": age,
@@ -25,10 +25,10 @@ $(document).ready(function () {
             success: function (data) {
                 console.log('Student added successfully');
                 alert('Student added successfully');
-                $('#name').val('');
-                $('#age').val('');
-                $('#num').val('');
-                $('#salary').val('');
+                $('#addName').val('');
+                $('#addAge').val('');
+                $('#addNum').val('');
+                $('#addSalary').val('');
             },
             error: function () {
                 alert('Please check the values you gave as input');
@@ -42,7 +42,7 @@ $(document).ready(function () {
 
     $("#deleteStudentForm").submit(function(event) {
         event.preventDefault();
-        const id = $('#id').val();
+        const id = $('#deleteId').val();
         $.ajax({
             url: '/student/' + id,
             type: 'DELETE',
@@ -51,11 +51,12 @@ $(document).ready(function () {
                 const deletedStudent = data.data;
                 console.log('Student deleted successfully');
                 alert(`Student ${deletedStudent.name} deleted successfully`);
-                $('#id').val('');
+                $('#deleteId').val('');
             },
             error: function () {
                 alert('Please check the student ID');
             }
         });
     });
+
 });
