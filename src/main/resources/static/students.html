@@ -114,6 +114,56 @@
     </form>
 </div>
 
+<!-- Getting students -->
+
+<div class="container text-center mt-5">
+    <button type="button" class="btn btn-warning btn-lg" id="getStudentBtn" style="width: 250px;">Get students</button>
+    <form id="getStudentForm" class="mt-3 d-none">
+        <div class="form-group row">
+            <div class="col-sm-3"></div>
+            <label for="getId" class="col-sm-3 col-form-label">Student ID:</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="getId" name="getId">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3"></div>
+            <label for="getName" class="col-sm-3 col-form-label">Name:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="getName" name="getName">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3"></div>
+            <label for="getAge" class="col-sm-3 col-form-label">Age:</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="getAge" name="getAge">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3"></div>
+            <label for="getNum" class="col-sm-3 col-form-label">Personal number:</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="getNum" name="getNum">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3"></div>
+            <label for="getSalary" class="col-sm-3 col-form-label">Salary:</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="getSalary" name="getSalary">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <input type="hidden" name="action" value="getStudent">
+        <button type="submit" class="btn btn-warning" style="width: 100px;">Get</button>
+    </form>
+</div>
+
 <script type="module" src="scripts/students.js" defer></script>
 </body>
 </html>
