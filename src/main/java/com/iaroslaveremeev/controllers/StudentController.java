@@ -46,14 +46,24 @@ public class StudentController {
         }
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<ResponseResult<List<Student>>> get(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) Integer age,
-            @RequestParam(required = false) Integer num,
-            @RequestParam(required = false) Double salary) {
-        List<Student> students = this.studentService.get(name, age, num, salary);
-        return new ResponseEntity<>(new ResponseResult<>(null, students), HttpStatus.OK);
+    @GetMapping("/search/name")
+    public List<Student> getStudentsByName(@RequestParam String name) {
+        return this.studentService.getStudentsByName(name);
+    }
+
+    @GetMapping("/search/age")
+    public List<Student> getStudentsByAge(@RequestParam Integer age) {
+        return this.studentService.getStudentsByAge(age);
+    }
+
+    @GetMapping("/search/num")
+    public List<Student> getStudentsByNum(@RequestParam Integer num) {
+        return this.studentService.getStudentsByNum(num);
+    }
+
+    @GetMapping("/search/salary")
+    public List<Student> getStudentsBySalary(@RequestParam Double salary) {
+        return this.studentService.getStudentsBySalary(salary);
     }
 
     @DeleteMapping(path = "/{id}")
