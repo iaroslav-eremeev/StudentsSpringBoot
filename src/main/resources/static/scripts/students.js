@@ -128,7 +128,8 @@ $(document).ready(function () {
     });
 
     $('#getDropdownList').change(function() {
-        $('#getStudentForm').toggleClass('d-none');
+        const form = $('#getStudentForm');
+        form.removeClass('d-none');
         const inputSelector = $('#formInput');
         inputSelector.removeClass("idInput");
         inputSelector.type = "number";
@@ -147,6 +148,7 @@ $(document).ready(function () {
         } else if (optionId === 'dropdownSalary') {
             $('#formInputLabel').text("Salary:");
         } else if (optionId === 'dropdownAll') {
+            form.addClass('d-none');
             $.ajax({
                 url: '/student',
                 method: 'GET',
