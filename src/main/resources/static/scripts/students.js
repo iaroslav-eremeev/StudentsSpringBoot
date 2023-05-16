@@ -163,7 +163,6 @@ $(document).ready(function () {
                 num: num,
                 salary: salary
             };
-
             $.ajax({
                 url: '/student/search',
                 method: 'GET',

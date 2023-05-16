@@ -3,6 +3,7 @@ package com.iaroslaveremeev.service;
 import com.iaroslaveremeev.model.Student;
 import com.iaroslaveremeev.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,8 +38,15 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> get(String name, Integer age, Integer num, Double salary){
-        return this.studentRepository.getStudentsByNameAndAgeAndNumAndSalary(name, age, num, salary);
+    public List<Student> get(String name, Integer age, Integer num, Double salary) {
+        Student student = new Student();
+        student.setName(name);
+        student.setAge(age);
+        student.setNum(num);
+        student.setSalary(salary);
+
+        Example<Student> exampleStudent = Example.of(student);
+        return studentRepository.findAll(exampleStudent);
     }
 
     @Override
