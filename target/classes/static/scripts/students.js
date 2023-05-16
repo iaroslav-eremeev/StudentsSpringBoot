@@ -25,8 +25,9 @@ $(document).ready(function () {
             contentType: 'application/json',
             dataType: 'json',
             data: JSON.stringify(student),
-            success: function (data) {
-                console.log('Student added successfully');
+            success: function (student) {
+                const addedStudent = student.data;
+                console.log(`Student ${addedStudent.name} added successfully`);
                 alert('Student added successfully');
                 $('#addName').val('');
                 $('#addAge').val('');
@@ -52,8 +53,8 @@ $(document).ready(function () {
             url: '/student/' + id,
             type: 'DELETE',
             contentType: 'application/json',
-            success: function (data) {
-                const deletedStudent = data.data;
+            success: function (student) {
+                const deletedStudent = student.data;
                 console.log('Student deleted successfully');
                 alert(`Student ${deletedStudent.name} deleted successfully`);
                 $('#deleteId').val('');
@@ -91,8 +92,8 @@ $(document).ready(function () {
             contentType: 'application/json',
             dataType: 'json',
             data: JSON.stringify(student),
-            success: function (data) {
-                const updatedStudent = data.data;
+            success: function (student) {
+                const updatedStudent = student.data;
                 console.log('Student updated successfully');
                 alert(`Student ${updatedStudent.name} updated successfully`);
                 $('#updateId').val('');
