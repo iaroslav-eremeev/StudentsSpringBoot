@@ -21,7 +21,7 @@ public class StudentServiceImpl implements StudentService {
     public void addStudent(Student student) {
         try {
             this.studentRepository.save(student);
-        } catch (ConstraintViolationException e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException("Student is already added!");
         }
     }
@@ -39,7 +39,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> get(String name, Integer age, Integer num, Double salary){
-        return this.studentRepository.getStudentsByNameAndByAgeAndByNumAndBySalary(name, age, num, salary);
+        return this.studentRepository.getStudentsByNameAndAgeAndNumAndSalary(name, age, num, salary);
     }
 
     @Override
