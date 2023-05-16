@@ -4,6 +4,7 @@ import com.iaroslaveremeev.model.Student;
 import com.iaroslaveremeev.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,15 +39,23 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> get(String name, Integer age, Integer num, Double salary) {
-        Student student = new Student();
-        student.setName(name);
-        student.setAge(age);
-        student.setNum(num);
-        student.setSalary(salary);
+    public List<Student> getStudentsByName(String name) {
+        return this.studentRepository.getStudentsByName(name);
+    }
 
-        Example<Student> exampleStudent = Example.of(student);
-        return studentRepository.findAll(exampleStudent);
+    @Override
+    public List<Student> getStudentsByAge(Integer age) {
+        return this.studentRepository.getStudentsByAge(age);
+    }
+
+    @Override
+    public List<Student> getStudentsByNum(Integer num) {
+        return this.studentRepository.getStudentsByNum(num);
+    }
+
+    @Override
+    public List<Student> getStudentsBySalary(Double salary) {
+        return this.studentRepository.getStudentsBySalary(salary);
     }
 
     @Override

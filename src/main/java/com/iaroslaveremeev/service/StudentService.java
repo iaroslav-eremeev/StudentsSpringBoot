@@ -10,6 +10,10 @@ public interface StudentService {
     Student get(long id);
     Student delete(long id);
     Student update(Student student);
-    List<Student> get(String name, Integer age, Integer num, Double salary);
+    List<Student> getStudentsByName(String name);
+    List<Student> getStudentsByAge(Integer age);
+    List<Student> getStudentsByNum(Integer num);
+    List<Student> getStudentsBySalary(Double salary);
+
 
 }

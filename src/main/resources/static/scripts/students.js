@@ -157,12 +157,11 @@ $(document).ready(function () {
             });
         }
         else if (!id && (name || age || num || salary)) {
-            var searchParams = {
-                name: name,
-                age: age,
-                num: num,
-                salary: salary
-            };
+            var searchParams = {};
+            if (name) searchParams.name = name;
+            if (age) searchParams.age = age;
+            if (num) searchParams.num = num;
+            if (salary) searchParams.salary = salary;
             $.ajax({
                 url: '/student/search',
                 method: 'GET',
