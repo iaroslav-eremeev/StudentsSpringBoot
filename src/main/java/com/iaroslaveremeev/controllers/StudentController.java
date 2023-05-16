@@ -47,23 +47,27 @@ public class StudentController {
     }
 
     @GetMapping("/search/name")
-    public List<Student> getStudentsByName(@RequestParam String name) {
-        return this.studentService.getStudentsByName(name);
+    public ResponseEntity<ResponseResult<List<Student>>> getStudentsByName(@RequestParam String name) {
+        return new ResponseEntity<>(new ResponseResult<>(null,
+                this.studentService.getStudentsByName(name)), HttpStatus.OK);
     }
 
     @GetMapping("/search/age")
-    public List<Student> getStudentsByAge(@RequestParam Integer age) {
-        return this.studentService.getStudentsByAge(age);
+    public ResponseEntity<ResponseResult<List<Student>>> getStudentsByAge(@RequestParam Integer age) {
+        return new ResponseEntity<>(new ResponseResult<>(null,
+                this.studentService.getStudentsByAge(age)), HttpStatus.OK);
     }
 
     @GetMapping("/search/num")
-    public List<Student> getStudentsByNum(@RequestParam Integer num) {
-        return this.studentService.getStudentsByNum(num);
+    public ResponseEntity<ResponseResult<List<Student>>> getStudentsByNum(@RequestParam Integer num) {
+        return new ResponseEntity<>(new ResponseResult<>(null,
+                this.studentService.getStudentsByNum(num)), HttpStatus.OK);
     }
 
     @GetMapping("/search/salary")
-    public List<Student> getStudentsBySalary(@RequestParam Double salary) {
-        return this.studentService.getStudentsBySalary(salary);
+    public ResponseEntity<ResponseResult<List<Student>>> getStudentsBySalary(@RequestParam Double salary) {
+        return new ResponseEntity<>(new ResponseResult<>(null,
+                this.studentService.getStudentsBySalary(salary)), HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/{id}")

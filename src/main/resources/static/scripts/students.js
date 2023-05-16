@@ -130,23 +130,27 @@ $(document).ready(function () {
     $('#getDropdownList').change(function() {
         const form = $('#getStudentForm');
         form.removeClass('d-none');
+        const label = $('#formInputLabel');
         const inputSelector = $('#formInput');
-        inputSelector.removeClass("idInput");
         inputSelector.attr('type', 'number');
         var selectedOption = $(this).find(':selected');
         var optionId = selectedOption.attr('id');
         if (optionId === 'dropdownId') {
-            $('#formInputLabel').text("Student ID:");
-            inputSelector.addClass("idInput");
+            label.text("Student ID:");
+            inputSelector.data('getParam', 'id');
         } else if (optionId === 'dropdownName') {
-            $('#formInputLabel').text("Name:");
+            label.text("Name:");
             inputSelector.attr('type', 'text');
+            inputSelector.data('getParam', 'name');
         } else if (optionId === 'dropdownAge') {
-            $('#formInputLabel').text("Age:");
+            label.text("Age:");
+            inputSelector.data('getParam', 'age');
         } else if (optionId === 'dropdownNum') {
-            $('#formInputLabel').text("Personal number:");
+            label.text("Personal number:");
+            inputSelector.data('getParam', 'num');
         } else if (optionId === 'dropdownSalary') {
-            $('#formInputLabel').text("Salary:");
+            label.text("Salary:");
+            inputSelector.data('getParam', 'salary');
         } else if (optionId === 'dropdownAll') {
             form.addClass('d-none');
             $.ajax({
@@ -160,24 +164,35 @@ $(document).ready(function () {
         }
     });
 
-    $('#getStudentForm').submit(function (event) {
+    $('#submitGetStudentForm').click(function (event) {
         event.preventDefault();
         const inputSelector = $('#formInput');
-        const parameter = inputSelector.val();
-        if (inputSelector.hasClass("idInput")){
+        const value = inputSelector.val();
+        const parameter = inputSelector.data('getParam');
+        console.log("Parameter is " + parameter);
+        console.log("Input value is " + value);
+        if (parameter === 'id'){
+            console.log("ID search selected!");
             $.ajax({
-                url: '/student/' + parameter,
+                url: '/student/' + value,
                 method: 'GET',
-                success: displayStudents,
+                success: function (student) {
+                    student = student.data;
+                    var ul = $('<ul>');
+                    var li = $('<li>').text('ID ' + student.id + '. ' + student.name + ', ' +
+                            student.age + ' years, personal number ' + student.num + ', salary ' + student.salary);
+                    ul.append(li);
+                    $('#studentsFound').empty().append(ul);
+                },
                 error: function () {
-                    alert('Error occurred while searching for a student by ID');
+                    alert('No student with such ID found');
                 }
             });
         } else {
+            console.log("Other parameter search selected!");
             $.ajax({
-                url: '/student/search/name',
+                url: '/student/search/' + parameter + "?" + parameter + "=" + value,
                 method: 'GET',
-                data: parameter,
                 success: displayStudents,
                 error: function () {
                     alert('Error occurred while searching for students by name');
