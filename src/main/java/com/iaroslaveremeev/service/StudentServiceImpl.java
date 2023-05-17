@@ -3,8 +3,6 @@ package com.iaroslaveremeev.service;
 import com.iaroslaveremeev.model.Student;
 import com.iaroslaveremeev.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -67,7 +65,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student update(Student student) {
-        if (student.getName() == null || student.getAge() <= 0 ||
+        if (student.getName().length() == 0 || student.getAge() <= 0 ||
                 student.getNum() <= 0 || student.getSalary() <= 0) {
             throw new IllegalArgumentException("One or more parameters are invalid");
         }
