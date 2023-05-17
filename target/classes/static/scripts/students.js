@@ -27,8 +27,7 @@ $(document).ready(function () {
             data: JSON.stringify(student),
             success: function (student) {
                 const addedStudent = student.data;
-                console.log(`Student ${addedStudent.name} added successfully`);
-                alert('Student added successfully');
+                alert(`Student ${addedStudent.name} added successfully`);
                 $('#addName').val('');
                 $('#addAge').val('');
                 $('#addNum').val('');
@@ -55,7 +54,6 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (student) {
                 const deletedStudent = student.data;
-                console.log('Student deleted successfully');
                 alert(`Student ${deletedStudent.name} deleted successfully`);
                 $('#deleteId').val('');
             },
@@ -94,7 +92,6 @@ $(document).ready(function () {
             data: JSON.stringify(student),
             success: function (student) {
                 const updatedStudent = student.data;
-                console.log('Student updated successfully');
                 alert(`Student ${updatedStudent.name} updated successfully`);
                 $('#updateId').val('');
                 $('#updateName').val('');
@@ -130,6 +127,10 @@ $(document).ready(function () {
     $('#getDropdownList').change(function() {
         const form = $('#getStudentForm');
         form.removeClass('d-none');
+        const submitButton = $('#submitGetStudentForm');
+        submitButton.removeClass('d-none');
+        const copyToUpdateButton = $('#copyToUpdateButton');
+        copyToUpdateButton.addClass('d-none');
         const label = $('#formInputLabel');
         const inputSelector = $('#formInput');
         inputSelector.attr('type', 'number');
@@ -138,6 +139,7 @@ $(document).ready(function () {
         if (optionId === 'dropdownId') {
             label.text("Student ID:");
             inputSelector.data('getParam', 'id');
+            copyToUpdateButton.removeClass('d-none');
         } else if (optionId === 'dropdownName') {
             label.text("Name:");
             inputSelector.attr('type', 'text');
@@ -152,6 +154,7 @@ $(document).ready(function () {
             label.text("Salary:");
             inputSelector.data('getParam', 'salary');
         } else if (optionId === 'dropdownAll') {
+            submitButton.addClass('d-none');
             form.addClass('d-none');
             $.ajax({
                 url: '/student',
@@ -169,10 +172,7 @@ $(document).ready(function () {
         const inputSelector = $('#formInput');
         const value = inputSelector.val();
         const parameter = inputSelector.data('getParam');
-        console.log("Parameter is " + parameter);
-        console.log("Input value is " + value);
         if (parameter === 'id'){
-            console.log("ID search selected!");
             $.ajax({
                 url: '/student/' + value,
                 method: 'GET',
@@ -183,13 +183,20 @@ $(document).ready(function () {
                             student.age + ' years, personal number ' + student.num + ', salary ' + student.salary);
                     ul.append(li);
                     $('#studentsFound').empty().append(ul);
+                    // Copy the code to update part so as not to do it manually
+                    $('#copyToUpdateButton').click(function (event) {
+                        $('#updateId').val('').val(student.id);
+                        $('#updateName').val('').val(student.name);
+                        $('#updateAge').val('').val(student.age);
+                        $('#updateNum').val('').val(student.num);
+                        $('#updateSalary').val('').val(student.salary);
+                    });
                 },
                 error: function () {
                     alert('No student with such ID found');
                 }
             });
         } else {
-            console.log("Other parameter search selected!");
             $.ajax({
                 url: '/student/search/' + parameter + "?" + parameter + "=" + value,
                 method: 'GET',

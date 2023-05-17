@@ -150,54 +150,11 @@
     <div id="buttonsSubmitAndClear" class="d-none">
         <button type="button" class="btn btn-info" id ="submitGetStudentForm" style="width: 130px; margin-right: 15px">Get</button>
         <button type="button" class="btn btn-danger" id ="clearGetSelection" style="width: 130px;">Clear selection</button>
+        <button type="button" class="btn btn-primary d-none" id ="copyToUpdateButton" style="width: 130px;">Copy to update</button>
     </div>
     <div id="studentsFound" class="mt-2"></div>
-
-
-
-    <form id="getStudentByNameForm" class="search-form mt-1 mb-3 d-none">
-        <div id="getStudentFormNameRow" class="form-group row">
-            <div class="col-sm-3"></div>
-            <label for="getName" class="col-sm-3 col-form-label">Name:</label>
-            <div class="col-sm-3">
-                <input type="text" class="form-control" id="getName" name="getName">
-            </div>
-            <div class="col-sm-3"></div>
-        </div>
-    </form>
-    <form id="getStudentByAgeForm" class="search-form mt-1 mb-3 d-none">
-        <div id="getStudentFormAgeRow" class="form-group row">
-            <div class="col-sm-3"></div>
-            <label for="getAge" class="col-sm-3 col-form-label">Age:</label>
-            <div class="col-sm-3">
-                <input type="number" class="form-control" id="getAge" name="getAge">
-            </div>
-            <div class="col-sm-3"></div>
-        </div>
-    </form>
-    <form id="getStudentByNumForm" class="search-form mt-1 mb-3 d-none">
-        <div id="getStudentFormNumRow" class="form-group row">
-            <div class="col-sm-3"></div>
-            <label for="getNum" class="col-sm-3 col-form-label">Personal number:</label>
-            <div class="col-sm-3">
-                <input type="number" class="form-control" id="getNum" name="getNum">
-            </div>
-            <div class="col-sm-3"></div>
-        </div>
-    </form>
-    <form id="getStudentBySalaryForm" class="search-form mt-1 mb-3 d-none">
-        <div id="getStudentFormSalaryRow" class="form-group row">
-            <div class="col-sm-3"></div>
-            <label for="getSalary" class="col-sm-3 col-form-label">Salary:</label>
-            <div class="col-sm-3">
-                <input type="number" class="form-control" id="getSalary" name="getSalary">
-            </div>
-            <div class="col-sm-3"></div>
-        </div>
-    </form>
-        <!--<input type="hidden" name="action" value="getStudent">-->
-
 </div>
+
 <script type="module" src="scripts/students.js" defer></script>
 </body>
 </html>

@@ -127,6 +127,10 @@ $(document).ready(function () {
     $('#getDropdownList').change(function() {
         const form = $('#getStudentForm');
         form.removeClass('d-none');
+        const submitButton = $('#submitGetStudentForm');
+        submitButton.removeClass('d-none');
+        const copyToUpdateButton = $('#copyToUpdateButton');
+        copyToUpdateButton.addClass('d-none');
         const label = $('#formInputLabel');
         const inputSelector = $('#formInput');
         inputSelector.attr('type', 'number');
@@ -135,6 +139,7 @@ $(document).ready(function () {
         if (optionId === 'dropdownId') {
             label.text("Student ID:");
             inputSelector.data('getParam', 'id');
+            copyToUpdateButton.removeClass('d-none');
         } else if (optionId === 'dropdownName') {
             label.text("Name:");
             inputSelector.attr('type', 'text');
@@ -149,6 +154,7 @@ $(document).ready(function () {
             label.text("Salary:");
             inputSelector.data('getParam', 'salary');
         } else if (optionId === 'dropdownAll') {
+            submitButton.addClass('d-none');
             form.addClass('d-none');
             $.ajax({
                 url: '/student',
@@ -177,6 +183,14 @@ $(document).ready(function () {
                             student.age + ' years, personal number ' + student.num + ', salary ' + student.salary);
                     ul.append(li);
                     $('#studentsFound').empty().append(ul);
+                    // Copy the code to update part so as not to do it manually
+                    $('#copyToUpdateButton').click(function (event) {
+                        $('#updateId').val('').val(student.id);
+                        $('#updateName').val('').val(student.name);
+                        $('#updateAge').val('').val(student.age);
+                        $('#updateNum').val('').val(student.num);
+                        $('#updateSalary').val('').val(student.salary);
+                    });
                 },
                 error: function () {
                     alert('No student with such ID found');
