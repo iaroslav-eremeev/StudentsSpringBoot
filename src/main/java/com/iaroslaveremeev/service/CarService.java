@@ -14,5 +14,5 @@ public interface CarService {
     List<Car> getCarsByBrand(String brand);
     List<Car> getCarsByPower(Integer power);
     List<Car> getCarsByYear(Integer year);
-    List<Car> getCarsByStudent(Student student);
+    List<Car> getCarsByStudentId(Long studentId);
 }

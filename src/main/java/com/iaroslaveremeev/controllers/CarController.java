@@ -74,9 +74,12 @@ public class CarController {
 
     @GetMapping("/search/studentId")
     public ResponseEntity<ResponseResult<List<Car>>> getCarsByStudentId(@RequestParam Long studentId) {
-        Student student = this.studentService.get(studentId);
-        return new ResponseEntity<>(new ResponseResult<>(null,
-                this.carService.getCarsByStudent(student)), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(new ResponseResult<>(null,
+                    this.carService.getCarsByStudentId(studentId)), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("No student with such ID exists!");
+        }
     }
 
     @DeleteMapping(path = "/{id}")

@@ -11,10 +11,16 @@ import java.util.List;
 @Service
 public class CarServiceImpl implements CarService {
     private CarRepository carRepository;
+    private StudentService studentService;
 
     @Autowired
     public void setCarRepository(CarRepository carRepository) {
         this.carRepository = carRepository;
+    }
+
+    @Autowired
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
     }
 
     @Override
@@ -53,8 +59,9 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> getCarsByStudent(Student student) {
-        return this.carRepository.getCarsByStudent(student);
+    public List<Car> getCarsByStudentId(Long studentId) {
+        Student student = this.studentService.get(studentId);
+        return student.getCars();
     }
 
     @Override
