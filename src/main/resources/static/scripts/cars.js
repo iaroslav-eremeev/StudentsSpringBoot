@@ -1,22 +1,19 @@
 $(document).ready(function () {
 
-    /* Add car */
-
-    $('#addCarBtn').click(function () {
-        $('#addCarForm').toggleClass('d-none');
-    });
-
     function populateStudentsDropdown() {
         $.ajax({
             url: '/student',
             method: 'GET',
             success: function(students) {
                 students = students.data;
-                var dropdown = $('#addStudent');
-                dropdown.empty();
+                var dropdownAdd = $('#addStudent');
+                var dropdownUpdate = $('#updateStudent');
+                dropdownAdd.empty();
+                dropdownUpdate.empty();
                 $.each(students, function(key, student) {
                     var optionText = 'ID ' + student.id + ' (' + student.name + ')';
-                    dropdown.append($('<option>').attr('data', student.id).text(optionText));
+                    dropdownAdd.append($('<option>').attr('data', student.id).text(optionText));
+                    dropdownUpdate.append($('<option>').attr('data', student.id).text(optionText));
                 });
             },
             error: function() {
@@ -25,8 +22,13 @@ $(document).ready(function () {
         });
     }
 
-    // Populate all the dropdown lists on page load
     populateStudentsDropdown();
+
+    /* Add car */
+
+    $('#addCarBtn').click(function () {
+        $('#addCarForm').toggleClass('d-none');
+    });
 
     $("#addCarForm").submit(function(event) {
         event.preventDefault();
@@ -103,32 +105,37 @@ $(document).ready(function () {
         const brand = $('#updateBrand').val();
         const power = parseInt($('#updatePower').val());
         const year = parseInt($('#updateYear').val());
-        const salary = parseFloat($('#updateSalary').val());
-        var car = {
-            "id": id,
-            "brand": brand,
-            "power": power,
-            "year": year,
-            "salary": salary
-        };
-
+        const studentId = parseInt($('#addStudent option:selected').attr('data'));
         $.ajax({
-            url: '/car',
-            type: 'PUT',
-            contentType: 'application/json',
-            dataType: 'json',
-            data: JSON.stringify(car),
-            success: function (car) {
-                const updatedCar = car.data;
-                alert(`Car ${updatedCar.brand} updated successfully`);
-                $('#updateId').val('');
-                $('#updateBrand').val('');
-                $('#updatePower').val('');
-                $('#updateYear').val('');
-                $('#updateSalary').val('');
-            },
-            error: function () {
-                alert('Please check the values you gave as input');
+            url: '/student/' + studentId,
+            method: 'GET',
+            success: function (student) {
+                var car = {
+                    "id": id,
+                    "brand": brand,
+                    "power": power,
+                    "year": year,
+                    "student": student.data
+                };
+                $.ajax({
+                    url: '/car',
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: JSON.stringify(car),
+                    success: function (car) {
+                        const updatedCar = car.data;
+                        alert(`Car ${updatedCar.brand} updated successfully`);
+                        $('#updateId').val('');
+                        $('#updateBrand').val('');
+                        $('#updatePower').val('');
+                        $('#updateYear').val('');
+                        $('#updateStudent').val('');
+                    },
+                    error: function () {
+                        alert('Please check the values you gave as input');
+                    }
+                });
             }
         });
     });
