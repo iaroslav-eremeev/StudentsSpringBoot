@@ -4,6 +4,7 @@ import com.iaroslaveremeev.dto.ResponseResult;
 import com.iaroslaveremeev.model.Car;
 import com.iaroslaveremeev.model.Student;
 import com.iaroslaveremeev.service.CarService;
+import com.iaroslaveremeev.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +16,16 @@ import java.util.List;
 @RequestMapping("/car")
 public class CarController {
     private CarService carService;
+    private StudentService studentService;
 
     @Autowired
     public void setCarService(CarService carService){
         this.carService = carService;
+    }
+
+    @Autowired
+    public void setStudentService(StudentService studentService){
+        this.studentService = studentService;
     }
 
     @PostMapping
@@ -65,8 +72,9 @@ public class CarController {
                 this.carService.getCarsByYear(year)), HttpStatus.OK);
     }
 
-    @GetMapping("/search/student")
-    public ResponseEntity<ResponseResult<List<Car>>> getCarsByStudent(@RequestParam Student student) {
+    @GetMapping("/search/studentId")
+    public ResponseEntity<ResponseResult<List<Car>>> getCarsByStudentId(@RequestParam Long studentId) {
+        Student student = this.studentService.get(studentId);
         return new ResponseEntity<>(new ResponseResult<>(null,
                 this.carService.getCarsByStudent(student)), HttpStatus.OK);
     }
