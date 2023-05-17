@@ -78,7 +78,8 @@ public class CarController {
             return new ResponseEntity<>(new ResponseResult<>(null,
                     this.carService.getCarsByStudentId(studentId)), HttpStatus.OK);
         } catch (Exception e) {
-            throw new IllegalArgumentException("No student with such ID exists!");
+            return new ResponseEntity<>(new ResponseResult<>("No student with such ID exists",
+                    null), HttpStatus.BAD_REQUEST);
         }
     }
 
