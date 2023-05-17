@@ -14,6 +14,4 @@ public interface StudentService {
     List<Student> getStudentsByAge(Integer age);
     List<Student> getStudentsByNum(Integer num);
     List<Student> getStudentsBySalary(Double salary);
-
-
 }
