@@ -1,6 +1,9 @@
 package com.iaroslaveremeev.controllers;
 
 import com.iaroslaveremeev.dto.ResponseResult;
+import com.iaroslaveremeev.model.Car;
+import com.iaroslaveremeev.model.Student;
+import com.iaroslaveremeev.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,10 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/*@RestController
+@RestController
 @RequestMapping("/car")
 public class CarController {
-
     private CarService carService;
 
     @Autowired
@@ -22,31 +24,7 @@ public class CarController {
     @PostMapping
     public ResponseEntity<ResponseResult<Car>> add (@RequestBody Car car){
         try {
-            this.carService.add(car);
-            return new ResponseEntity<>(new ResponseResult<>(null, car), HttpStatus.OK);
-        } catch (IllegalArgumentException e){
-            return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    @DeleteMapping(path = "/{id}")
-    public ResponseEntity<ResponseResult<Car>> delete (@PathVariable long id){
-        try {
-            Car car = this.carService.delete(id);
-            return new ResponseEntity<>(new ResponseResult<>(null, car), HttpStatus.OK);
-        } catch (IllegalArgumentException e){
-            return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    @PutMapping
-    public ResponseEntity<ResponseResult<Car>> update (@RequestBody Car car){
-        try {
-            if (car.getId() <= 0){
-                return new ResponseEntity<>(new ResponseResult<>("Incorrect id", null),
-                        HttpStatus.BAD_REQUEST);
-            }
-            this.carService.update(car);
+            this.carService.addCar(car);
             return new ResponseEntity<>(new ResponseResult<>(null, car), HttpStatus.OK);
         } catch (IllegalArgumentException e){
             return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
@@ -69,16 +47,48 @@ public class CarController {
         }
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<ResponseResult<List<Car>>> getByCriteria(@RequestParam(required = false) String brand,
-                                                                   @RequestParam(required = false) Integer power,
-                                                                   @RequestParam(required = false) Integer year,
-                                                                   @RequestParam(required = false) Long idStudent) {
+    @GetMapping("/search/brand")
+    public ResponseEntity<ResponseResult<List<Car>>> getCarsByBrand(@RequestParam String brand) {
+        return new ResponseEntity<>(new ResponseResult<>(null,
+                this.carService.getCarsByBrand(brand)), HttpStatus.OK);
+    }
+
+    @GetMapping("/search/power")
+    public ResponseEntity<ResponseResult<List<Car>>> getCarsByPower(@RequestParam Integer power) {
+        return new ResponseEntity<>(new ResponseResult<>(null,
+                this.carService.getCarsByPower(power)), HttpStatus.OK);
+    }
+
+    @GetMapping("/search/year")
+    public ResponseEntity<ResponseResult<List<Car>>> getCarsByYear(@RequestParam Integer year) {
+        return new ResponseEntity<>(new ResponseResult<>(null,
+                this.carService.getCarsByYear(year)), HttpStatus.OK);
+    }
+
+    @GetMapping("/search/student")
+    public ResponseEntity<ResponseResult<List<Car>>> getCarsByStudent(@RequestParam Student student) {
+        return new ResponseEntity<>(new ResponseResult<>(null,
+                this.carService.getCarsByStudent(student)), HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<ResponseResult<Car>> delete (@PathVariable long id){
         try {
-            List<Car> cars = this.carService.getByCriteria(brand, power, year, idStudent);
-            return new ResponseEntity<>(new ResponseResult<>(null, cars), HttpStatus.OK);
+            Car car = this.carService.delete(id);
+            return new ResponseEntity<>(new ResponseResult<>(null, car), HttpStatus.OK);
         } catch (IllegalArgumentException e){
             return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
         }
     }
-}*/
+
+    @PutMapping
+    public ResponseEntity<ResponseResult<Car>> update (@RequestBody Car car){
+        try {
+            Car baseCar = this.carService.update(car);
+            return new ResponseEntity<>(new ResponseResult<>(null, baseCar), HttpStatus.OK);
+        } catch (IllegalArgumentException e){
+            return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+}
