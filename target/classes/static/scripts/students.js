@@ -122,6 +122,10 @@ $(document).ready(function () {
         $('#getDropdownList').selectedIndex = -1;
         $('#dropdownListDiv').toggleClass('d-none');
         $('#buttonsSubmitAndClear').toggleClass('d-none');
+        const form = $('#getStudentForm');
+        if (!form.hasClass('d-none')){
+            form.toggleClass('d-none');
+        }
     });
 
     $('#getDropdownList').change(function() {
