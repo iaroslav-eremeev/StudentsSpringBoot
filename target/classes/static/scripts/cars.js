@@ -45,24 +45,24 @@ $(document).ready(function () {
                     "year": year,
                     "student": student.data
                 };
-                $.ajax({
-                    url: '/car',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    dataType: 'json',
-                    data: JSON.stringify(car),
-                    success: function (car) {
-                        const addedCar = car.data;
-                        alert(`Car ${addedCar.brand} added successfully`);
-                        $('#addBrand').val('');
-                        $('#addPower').val('');
-                        $('#addYear').val('');
-                        $('#addStudent').val('');
-                    },
-                    error: function () {
-                        alert('Please check the values you gave as input');
-                    }
-                });
+            }
+        });
+        $.ajax({
+            url: '/car',
+            type: 'POST',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(car),
+            success: function (car) {
+                const addedCar = car.data;
+                alert(`Car ${addedCar.brand} added successfully`);
+                $('#addBrand').val('');
+                $('#addPower').val('');
+                $('#addYear').val('');
+                $('#addStudent').val('');
+            },
+            error: function () {
+                alert('Please check the values you gave as input');
             }
         });
     });
