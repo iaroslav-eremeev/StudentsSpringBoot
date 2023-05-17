@@ -25,9 +25,8 @@ public class Student {
     private int num;
     @NonNull
     private double salary;
-
-    /*@OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @JsonIgnore
-    private List<Car> cars;*/
+    private List<Car> cars;
 }
