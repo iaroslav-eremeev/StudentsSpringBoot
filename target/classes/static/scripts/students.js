@@ -206,10 +206,14 @@ $(document).ready(function () {
                 }
             });
         }
+        // Clear inputSelector
+        inputSelector.val('');
     });
 
     $('#clearGetSelection').click(function () {
         $('#studentsFound').empty();
         $('#getDropdownList').selectedIndex = -1;
+        // Clear inputSelector
+        $('#formInput').val('');
     });
 });
