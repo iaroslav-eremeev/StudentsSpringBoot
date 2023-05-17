@@ -8,6 +8,12 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <style>
+    html, body {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
     ul {
         list-style-type: none;
         padding: 0;
@@ -19,7 +25,7 @@
 
 <!-- Adding new students -->
 
-<div class="container text-center mt-3">
+<div class="container text-center mt-5">
     <button type="button" class="btn btn-success btn-lg" id="addStudentBtn" style="width: 250px;">Add new student</button>
     <form id="addStudentForm" class="mt-3 d-none">
         <div class="form-group row">
@@ -61,7 +67,7 @@
 
 <!-- Deleting students -->
 
-<div class="container text-center mt-3">
+<div class="container text-center mt-5">
     <button type="button" class="btn btn-danger btn-lg" id="deleteStudentBtn" style="width: 250px;">Delete student</button>
     <form id="deleteStudentForm" class="mt-3 d-none">
         <div class="form-group row">
@@ -79,7 +85,7 @@
 
 <!-- Updating students -->
 
-<div class="container text-center mt-3">
+<div class="container text-center mt-5">
     <button type="button" class="btn btn-primary btn-lg" id="updateStudentBtn" style="width: 250px;">Update student</button>
     <form id="updateStudentForm" class="mt-3 d-none">
         <div class="form-group row">
@@ -129,7 +135,7 @@
 
 <!-- Getting students -->
 
-<div class="container text-center mt-3">
+<div class="container text-center mt-5">
     <button type="button" class="btn btn-info btn-lg" id="getStudentBtn" style="width: 250px; margin-bottom: 25px">Get students</button>
     <div id="dropdownListDiv" class="d-none">
         <p>Choose the parameter to find students by:</p>
