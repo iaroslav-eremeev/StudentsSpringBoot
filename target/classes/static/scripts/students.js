@@ -164,6 +164,9 @@ $(document).ready(function () {
                     alert('Error occurred while getting the whole list of students');
                 }
             });
+        } else {
+            submitButton.addClass('d-none');
+            form.addClass('d-none');
         }
     });
 
