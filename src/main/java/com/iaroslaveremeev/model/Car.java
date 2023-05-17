@@ -23,6 +23,5 @@ public class Car {
     private int year;
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
-    @JsonIgnore
     private Student student;
 }
