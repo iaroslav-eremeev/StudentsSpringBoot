@@ -108,7 +108,7 @@ $(document).ready(function () {
         const brand = $('#updateBrand').val();
         const power = parseInt($('#updatePower').val());
         const year = parseInt($('#updateYear').val());
-        const studentId = parseInt($('#addStudent option:selected').attr('data'));
+        const studentId = parseInt($('#updateStudent option:selected').attr('data'));
         $.ajax({
             url: '/student/' + studentId,
             method: 'GET',
@@ -151,7 +151,7 @@ $(document).ready(function () {
         $.each(cars, function (key, car) {
             var li = $('<li>').text('ID ' + car.id + '. ' + car.brand + ', ' +
                 car.power + ' hp, year of production ' + car.year +
-                ', owner ' + car.student.name + 'with ID ' + car.student.id);
+                ', owner ' + car.student.name + ' with ID ' + car.student.id);
             ul.append(li);
         });
         $('#carsFound').empty().append(ul);
@@ -231,7 +231,7 @@ $(document).ready(function () {
                     var ul = $('<ul>');
                     var li = $('<li>').text('ID ' + car.id + '. ' + car.brand + ', ' +
                         car.power + ' hp, year of production ' + car.year +
-                        ', owner ' + car.student.name + 'with ID ' + car.student.id);
+                        ', owner ' + car.student.name + ' with ID ' + car.student.id);
                     ul.append(li);
                     $('#carsFound').empty().append(ul);
                     // Copy the code to update part so as not to do it manually
@@ -245,6 +245,16 @@ $(document).ready(function () {
                 },
                 error: function () {
                     alert('No car with such ID found');
+                }
+            });
+        } else if (parameter === 'studentId'){
+            const studentId = parseInt($('#getStudent option:selected').attr('data'));
+            $.ajax({
+                url: '/car/search/studentId?' + parameter + "=" + studentId,
+                method: 'GET',
+                success: displayCars,
+                error: function () {
+                    alert('Error occurred while searching for cars by brand');
                 }
             });
         } else {
