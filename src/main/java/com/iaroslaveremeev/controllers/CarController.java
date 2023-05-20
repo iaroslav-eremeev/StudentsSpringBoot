@@ -2,7 +2,6 @@ package com.iaroslaveremeev.controllers;
 
 import com.iaroslaveremeev.dto.ResponseResult;
 import com.iaroslaveremeev.model.Car;
-import com.iaroslaveremeev.model.Student;
 import com.iaroslaveremeev.service.CarService;
 import com.iaroslaveremeev.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;

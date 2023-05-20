@@ -180,7 +180,8 @@ $(document).ready(function () {
         inputSelector.attr('type', 'number');
         var selectedOption = $(this).find(':selected');
         var optionId = selectedOption.attr('id');
-        $('#getStudent').addClass('d-none');
+        const studentSelector = $('#getStudent');
+        studentSelector.addClass('d-none');
         if (optionId === 'dropdownId') {
             label.text("Car ID:");
             inputSelector.data('getParam', 'id');
@@ -199,7 +200,7 @@ $(document).ready(function () {
             label.text("Student:");
             inputSelector.data('getParam', 'studentId');
             inputSelector.addClass('d-none');
-            $('#getStudent').removeClass('d-none');
+            studentSelector.removeClass('d-none');
         } else if (optionId === 'dropdownAll') {
             submitButton.addClass('d-none');
             form.addClass('d-none');
@@ -267,14 +268,12 @@ $(document).ready(function () {
                 }
             });
         }
-        // Clear inputSelector
         inputSelector.val('');
     });
 
     $('#clearGetSelection').click(function () {
         $('#carsFound').empty();
         $('#getDropdownList').selectedIndex = -1;
-        // Clear inputSelector
         $('#formInput').val('');
     });
 });
