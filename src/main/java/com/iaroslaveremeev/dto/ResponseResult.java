@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseResult<T> {
-    private String message;
-    private T data;
+    private String message; // Message associated with the response
+
+    private T data; // Data to be included in the response
 }
